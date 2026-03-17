@@ -24,7 +24,7 @@
 
     <!-- Hero Content -->
     <div class="hero-content">
-      <p class="hero-tag">✦ Luxury Beachfront Resort & Spa ✦</p>
+      <p class="hero-tag">✦ mercure pattaya ocean resort ✦</p>
 
 
       <!-- Slideshow กลางหน้า -->
@@ -80,38 +80,38 @@ const bubbles = Array.from({ length: 14 }, (_, i) => ({
 const scrollTo = (sel) => document.querySelector(sel)?.scrollIntoView({ behavior: 'smooth' })
 
 const slides = [
-  '/booking-engine/src/router/assets/image/hero/1.jpg',
-  '/booking-engine/src/router/assets/image/hero/2.jpg',
-  '/booking-engine/src/router/assets/image/hero/3.jpg',
-  '/booking-engine/src/router/assets/image/hero/4.jpg',
-  '/booking-engine/src/router/assets/image/hero/5.jpg',
-  '/booking-engine/src/router/assets/image/hero/6.jpg',
-  '/booking-engine/src/router/assets/image/hero/7.jpg',
-  '/booking-engine/src/router/assets/image/hero/8.jpg',
-  '/booking-engine/src/router/assets/image/hero/9.jpg',
-  '/booking-engine/src/router/assets/image/hero/10.jpg',
-  '/booking-engine/src/router/assets/image/hero/11.jpg',
-  '/booking-engine/src/router/assets/image/hero/12.jpg',
-  '/booking-engine/src/router/assets/image/hero/13.jpg',
-  '/booking-engine/src/router/assets/image/hero/14.jpg',
-  '/booking-engine/src/router/assets/image/hero/15.jpg',
-  '/booking-engine/src/router/assets/image/hero/16.jpg',
-  '/booking-engine/src/router/assets/image/hero/17.jpg',
-  '/booking-engine/src/router/assets/image/hero/18.jpg',
-  '/booking-engine/src/router/assets/image/hero/19.jpg',
-  '/booking-engine/src/router/assets/image/hero/20.jpg',
-  '/booking-engine/src/router/assets/image/hero/21.jpg',
-  '/booking-engine/src/router/assets/image/hero/22.jpg',
-  '/booking-engine/src/router/assets/image/hero/23.jpg',
-  '/booking-engine/src/router/assets/image/hero/24.jpg',
-  '/booking-engine/src/router/assets/image/hero/25.jpg',
-  '/booking-engine/src/router/assets/image/hero/26.jpg',
-  '/booking-engine/src/router/assets/image/hero/27.jpg',
-  '/booking-engine/src/router/assets/image/hero/28.jpg',
-  '/booking-engine/src/router/assets/image/hero/29.jpg',
-  '/booking-engine/src/router/assets/image/hero/30.jpg',
-  '/booking-engine/src/router/assets/image/hero/31.jpg',
-  '/booking-engine/src/router/assets/image/hero/32.jpg',
+  new URL('../assets/image/hero/1.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/2.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/3.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/4.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/5.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/6.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/7.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/8.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/9.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/10.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/11.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/12.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/13.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/14.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/15.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/16.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/17.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/18.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/19.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/20.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/21.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/22.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/23.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/24.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/25.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/26.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/27.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/28.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/29.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/30.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/31.jpg', import.meta.url).href,
+  new URL('../assets/image/hero/32.jpg', import.meta.url).href,
 ]
 
 const slideIndex = ref(0)
