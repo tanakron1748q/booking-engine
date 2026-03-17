@@ -22,7 +22,8 @@ html {
 
 body {
   font-family: 'Cormorant Garamond', serif;
-  background: var(--pearl);
+  /* background: var(--pearl); */
+  background-color: #FCFAF1;
   color: var(--deep);
   overflow-x: hidden;
 }

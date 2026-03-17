@@ -29,7 +29,7 @@
         ลืมหายใจ<br /><em>ใต้ท้องทะเล</em>
       </h1>
       <p class="hero-sub">
-        สัมผัสความหรูหราระดับ 5 ดาว บนชายหาดทรายขาวที่ใสสะอาดที่สุดในอ่าวไทย
+        hello world
       </p>
       <div class="hero-btns">
         <button class="btn-primary" @click="scrollTo('#booking')">จองห้องพัก</button>
@@ -55,7 +55,7 @@
 <script setup>
 const bubbles = Array.from({ length: 14 }, (_, i) => ({
   id: i,
-  x: Math.random() * 100,
+  x: Math.random() * 100, 
   s: 8 + Math.random() * 28,
   d: 8 + Math.random() * 16,
   delay: Math.random() * 10,

@@ -4,85 +4,122 @@
     <h2 class="section-title">เลือกห้องพักที่ใช่สำหรับคุณ</h2>
     <p class="section-desc">ห้องพักทุกประเภทออกแบบมาเพื่อให้คุณได้สัมผัสกับวิวทะเลอันสวยงาม</p>
 
-    <div class="rooms-grid">
-      <div
-        v-for="room in rooms"
-        :key="room.id"
-        class="room-card"
-        @click="selected = room"
-      >
-        <div class="room-img">
-          <!-- Deluxe -->
-          <svg v-if="room.type === 'deluxe'" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="rm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a4060"/><stop offset="100%" stop-color="#3ab4d4"/></linearGradient></defs>
-            <rect width="400" height="280" fill="url(#rm1)"/>
-            <rect x="0" y="170" width="400" height="110" fill="#f5e9d3"/>
-            <rect x="60" y="130" width="180" height="90" rx="4" fill="white" opacity="0.9"/>
-            <rect x="60" y="130" width="180" height="28" rx="4" fill="#c6a04f" opacity="0.8"/>
-            <rect x="70" y="142" width="50" height="18" rx="2" fill="white"/>
-            <rect x="130" y="142" width="50" height="18" rx="2" fill="white"/>
-            <rect x="270" y="90" width="100" height="90" rx="3" fill="#3ab4d4" opacity="0.6"/>
-            <path d="M270,145 Q320,135 370,145" stroke="white" stroke-width="1.5" fill="none" opacity="0.7"/>
-            <circle cx="340" cy="105" r="14" fill="#f5d78e" opacity="0.7"/>
-          </svg>
-          <!-- Suite -->
-          <svg v-if="room.type === 'suite'" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="rm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#021624"/><stop offset="100%" stop-color="#054a70"/></linearGradient></defs>
-            <rect width="400" height="280" fill="url(#rm2)"/>
-            <rect x="0" y="190" width="400" height="90" fill="#1a1208"/>
-            <rect x="20" y="40" width="360" height="160" rx="4" fill="#0a7ea0" opacity="0.5"/>
-            <rect x="20" y="40" width="360" height="80" fill="#021624" opacity="0.7"/>
-            <circle cx="60" cy="65" r="1.5" fill="white" opacity="0.8"/>
-            <circle cx="130" cy="55" r="1" fill="white" opacity="0.6"/>
-            <circle cx="250" cy="70" r="1.5" fill="white" opacity="0.7"/>
-            <circle cx="330" cy="58" r="1" fill="white" opacity="0.6"/>
-            <circle cx="190" cy="50" r="2" fill="#f5d78e" opacity="0.9"/>
-            <path d="M20,120 Q200,110 380,120" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-            <rect x="50" y="195" width="130" height="60" rx="3" fill="#c6a04f" opacity="0.6"/>
-            <rect x="220" y="200" width="140" height="50" rx="3" fill="#054a70" opacity="0.4"/>
-          </svg>
-          <!-- Villa -->
-          <svg v-if="room.type === 'villa'" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="rm3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#56c9e8"/><stop offset="100%" stop-color="#3ab4d4"/></linearGradient></defs>
-            <rect width="400" height="280" fill="url(#rm3)"/>
-            <path d="M0,140 Q100,125 200,140 Q300,155 400,140 L400,280 L0,280Z" fill="#054a70" opacity="0.8"/>
-            <rect x="100" y="80" width="200" height="120" rx="4" fill="white" opacity="0.92"/>
-            <rect x="100" y="80" width="200" height="16" rx="4" fill="#8B6914"/>
-            <line x1="120" y1="200" x2="120" y2="240" stroke="#8B6914" stroke-width="5"/>
-            <line x1="200" y1="200" x2="200" y2="245" stroke="#8B6914" stroke-width="5"/>
-            <line x1="280" y1="200" x2="280" y2="240" stroke="#8B6914" stroke-width="5"/>
-            <rect x="80" y="190" width="240" height="16" rx="3" fill="#c4a35a"/>
-            <ellipse cx="200" cy="230" rx="50" ry="16" fill="#3ab4d4" opacity="0.7"/>
-            <rect x="125" y="105" width="60" height="50" rx="2" fill="#3ab4d4" opacity="0.6"/>
-            <rect x="215" y="105" width="60" height="50" rx="2" fill="#3ab4d4" opacity="0.6"/>
-            <circle cx="340" cy="30" r="22" fill="#f5d78e" opacity="0.8"/>
-          </svg>
-        </div>
-        <div class="room-info">
-          <p class="room-badge">{{ room.badge }}</p>
-          <h3 class="room-name">{{ room.name }}</h3>
-          <p class="room-desc">{{ room.desc }}</p>
-          <div class="room-price">
-            <span class="price-from">เริ่มต้น</span>
-            <span class="price-num">{{ room.price }}</span>
-            <span class="price-unit">บาท/คืน</span>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn prev" @click="prev" :disabled="currentIndex === 0">&#8249;</button>
+
+      <div class="carousel-track-container">
+        <div
+          class="carousel-track"
+          :style="{ transform: `translateX(-${currentIndex * cardStep}%)` }"
+        >
+          <div
+            v-for="room in rooms"
+            :key="room.id"
+            class="room-card"
+            @click="selected = room"
+          >
+          <!-- hoo -->
+            <div class="room-img">
+              <!-- Superior King -->
+              <img
+                src="/booking-engine/src/router/assets/image/superiorKing.jpg"
+                v-if="room.type === 'Superior King'"
+                class="room-image"
+                alt="Superior King"
+              />
+              <!-- Deluxe -->
+              <img 
+                src = "/booking-engine/src/router/assets/image/superiorTwin.jpg"
+                v-if="room.type === 'Superior Twin'"
+                class="room-image"
+                alt="Superior Twin"
+              />
+              <!-- Suite -->
+              <img 
+                src = "/booking-engine/src/router/assets/image/SuperiorOceanViewKing.jpg"  
+                v-if="room.type === 'Superior Ocean View King'"
+                class="room-image"
+                alt="Superior Ocean View King"
+              >
+              <!-- Villa -->
+              <img 
+                src = "/booking-engine/src/router/assets/image/deluxeOceanViewKing.jpg"
+                v-if="room.type === 'Deluxe Ocean View King'"
+                class="room-image"
+                alt="Deluxe Ocean View King"
+              >
+              <!-- Grand Suite -->
+              <img 
+                src = "/booking-engine/src/router/assets/image/deluxeOceanViewTwin.jpg"
+                v-if="room.type === 'Deluxe Ocean View Twin'"
+                class="room-image"
+                alt="Deluxe Ocean View Twin"
+              >
+              <!-- Pool Villa -->
+              <img 
+                src = "/booking-engine/src/router/assets/image/executiveFamilySuite.jpg"
+                v-if="room.type === 'Executive Family Suite'"
+                class="room-image"
+                alt="Executive Family Suite"
+              >
+              <!-- Family Room -->
+              <img 
+                src = "/booking-engine/src/router/assets/image/oceanViewSuite.jpg"
+                v-if="room.type === 'Ocean View Suite'"
+                class="room-image"
+                alt="Ocean View Suite" 
+              >
+            </div>
+
+            <div class="room-info">
+              <p class="room-badge">{{ room.badge }}</p>
+              <h3 class="room-name">{{ room.name }}</h3>
+              <p class="room-desc">{{ room.desc }}</p>
+              <div class="room-price">
+                <span class="price-from">เริ่มต้น</span>
+                <span class="price-num">{{ room.price }}</span>
+                <span class="price-unit">บาท/คืน</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
+      <button class="carousel-btn next" @click="next" :disabled="currentIndex >= maxIndex">&#8250;</button>
+
+      <!-- Dots -->
+      <div class="carousel-dots">
+        <span
+          v-for="(_, i) in totalDots"
+          :key="i"
+          class="dot"
+          :class="{ active: i === currentIndex }"
+          @click="currentIndex = i"
+        />
+      </div>
+    </div>
+      
+
+    <!-- asdasd -->
     <!-- Modal -->
     <Transition name="modal">
       <div v-if="selected" class="modal-overlay" @click.self="selected = null">
         <div class="modal-box">
           <button class="modal-close" @click="selected = null">✕</button>
-          <p class="modal-badge">{{ selected.badge }}</p>
-          <h2 class="modal-title">{{ selected.name }}</h2>
+          <p class="modal-badge">{{ selected.badge }} </p> 
+          <h2 class="modal-title">{{ selected.name }} Room</h2>
           <p class="modal-desc">{{ selected.fullDesc }}</p>
           <div class="amenities">
             <span v-for="a in selected.amenities" :key="a" class="amenity-tag">{{ a }}</span>
           </div>
-          <button class="btn-primary" style="width:100%;text-align:center;">จองห้องนี้</button>
+          <button
+            class="btn-primary"
+            style="width:100%;text-align:center;background-color: #E6B31E; color: #343434;"
+            @click="openModal(selected.name); selected = null"
+          >
+          Booking now
+          </button>
+          
         </div>
       </div>
     </Transition>
@@ -90,114 +127,256 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useBookingModal } from '../../composables/useBookingModal.js'
+const { openModal } = useBookingModal()
 
 const selected = ref(null)
+const currentIndex = ref(0)
+const visibleCount = ref(3)
 
+const updateVisible = () => {
+  if (window.innerWidth < 768) visibleCount.value = 1
+  else if (window.innerWidth < 1100) visibleCount.value = 2
+  else visibleCount.value = 3
+}
+
+onMounted(() => {
+  updateVisible()
+  window.addEventListener('resize', updateVisible)
+})
+onUnmounted(() => window.removeEventListener('resize', updateVisible))
+// here
 const rooms = [
   {
-    id: 1, type: 'deluxe',
-    badge: 'ห้องพักมาตรฐาน',
-    name: 'Deluxe Ocean View',
-    desc: 'ห้องพักสุดสบายพร้อมวิวทะเลแบบพาโนรามา เริ่มต้นประสบการณ์ Azura อย่างลงตัว',
-    price: '4,500',
-    fullDesc: 'Deluxe Ocean View มอบประสบการณ์การพักผ่อนที่ผสมผสานความสะดวกสบายและความงามของทะเลเข้าด้วยกัน ห้องพักพื้นที่ 45 ตร.ม. พร้อมระเบียงชมวิวทะเลส่วนตัว',
-    amenities: ['ระเบียงวิวทะเล', 'เตียง King Size', 'อ่างอาบน้ำ', 'Wi-Fi ฟรี', 'มินิบาร์', 'Safe Box'],
+    id: 1, type: 'Superior King',
+    badge: 'Superior',
+    name: 'Superior King',
+    desc: '26 m² Superior King room with king bed, private balcony, bathroom, 39" TV, free Wi-Fi, safe, refrigerator, and tea & coffee facilities.',
+    price: '2,700',
+    fullDesc: 'Light and spacious, our 26 m² Superior King rooms feature contemporary décor, king size bed, large bathroom with shower and toiletries, private balcony, workstation, 39" LCD TV, free WiFi access, in-room safe, refrigerator, tea & coffee-making facilities.',
+    amenities: ['King size bed', 'Food And Beverage', 'Bathroom', 'Media And Technology', 'Service And Equipment'],
   },
   {
-    id: 2, type: 'suite',
-    badge: 'ห้องสวีท',
-    name: 'Premier Ocean Suite',
-    desc: 'ห้องสวีทหรูหราพร้อมเลานจ์ส่วนตัว วิวทะเล 180 องศา สำหรับคู่รักและครอบครัว',
-    price: '9,800',
-    fullDesc: 'Premier Ocean Suite ขนาด 80 ตร.ม. พร้อมห้องนั่งเล่นแยก ระเบียงวิวทะเล 180 องศา และบริการ Butler ส่วนตัวตลอด 24 ชั่วโมง',
-    amenities: ['วิว 180°', 'Butler Service', 'ห้องนั่งเล่นแยก', 'Jacuzzi', 'ชุดต้อนรับ', 'Early Check-in'],
+    id: 2, type: 'Superior Twin',
+    badge: 'Superior',
+    name: 'Superior Twin',
+    desc: '26 m² Superior Twin room with two twin beds, private balcony, bathroom, 39" TV, free Wi-Fi, safe, refrigerator, and tea & coffee facilities.',
+    price: '2,795',
+    fullDesc: 'Light and spacious, our 26 m² Superior Twin rooms feature contemporary décor, 2 single beds, large bathroom with shower and toiletries, private balcony, workstation, 39" LCD TV, free WiFi access, in-room safe, refrigerator, tea & coffee-making facilities.',
+    amenities: ['King size bed', 'Private Balcony', 'Bathroom', 'Media And Technology', 'Service And Equipment'],
   },
   {
-    id: 3, type: 'villa',
-    badge: 'วิลล่าพิเศษ',
-    name: 'Overwater Villa',
-    desc: 'วิลล่ากลางทะเลบนเสาไม้ สระว่ายน้ำส่วนตัว และบันไดลงทะเลโดยตรง',
-    price: '22,000',
-    fullDesc: 'Overwater Villa คือสุดยอดประสบการณ์ที่หายาก วิลล่า 120 ตร.ม. ตั้งอยู่กลางทะเลพร้อมสระว่ายน้ำกึ่งอินฟินิตี บันไดลงทะเลส่วนตัว และพระอาทิตย์ตกดินที่งดงาม',
-    amenities: ['สระว่ายน้ำส่วนตัว', 'บันไดลงทะเล', 'วิวทะเล 360°', 'Dining บนน้ำ', 'Kayak ฟรี', 'Snorkel Set'],
+    id: 3, type: 'Superior Ocean View King',
+    badge: 'Superior',
+    name: 'Superior Ocean View King',
+    desc: '26 m² Superior Ocean View room with a king-size bed, private balcony, modern bathroom, 39" TV, free Wi-Fi, safe, refrigerator, and tea & coffee facilities.',
+    price: '3,745',
+    fullDesc: 'Our 26 m² Superior Ocean View rooms feature contemporary décor, a king-size bed and large bathroom with shower and toiletries, private balcony, workstation, 39" LCD TV, free WiFi access, in-room safe, refrigerator, tea and coffee-making facilities.',
+    amenities: ['King size bed', 'Food And Beverage', 'Bathroom', 'Media And Technology', 'Service And Equipment', 'Early Check-in'],
+  },
+  {
+    id: 4, type: 'Deluxe Ocean View King',
+    badge: 'Deluxe ',
+    name: 'Deluxe Ocean View King',
+    desc: '26 m² ocean-view room with contemporary décor, king-size bed, private balcony, modern bathroom, 39" TV, Bose speaker, espresso machine, free Wi-Fi, and in-room amenities.',
+    price: '4,080',
+    fullDesc: 'Fabulous ocean view in 26 sq.m featuring contemporary décor, king-size bed, large bathroom with shower and deluxe toiletries, private balcony, workstation, 39" LCD TV, Bose Bluetooth speaker, espresso machine, a safe, free in-room refreshments and WIFI.',
+    amenities: ['Ocean View', 'King Bed', 'Private Balcony', 'Free Wi-Fi', '39" TV', 'Modern Bathroom'],
+  },
+  {
+    id: 5, type: 'Deluxe Ocean View Twin',
+    badge: 'Deluxe',
+    name: 'Deluxe Ocean View Twin',
+    desc: '26 m² Deluxe Ocean View room with twin beds, private balcony, modern bathroom, 39" TV, Bose speaker, espresso machine, free Wi-Fi, and in-room refreshments.',
+    price: '4,080',
+    fullDesc: 'Fabulous 26 m² Deluxe Ocean View rooms feature contemporary décor, twin size bed,bathroom with shower and deluxe toiletries, private balcony, workstation, 39" LCD TV, Bose Bluetooth speaker, espresso machine, a safe, free in-room refreshments and WiFi',
+    amenities: ['Ocean View', 'Twin Beds', 'Private Balcony', 'Free Wi-Fi', '39" TV', 'Modern Bathroom'],
+  },
+  {
+    id: 6, type: 'Executive Family Suite',
+    badge: 'Executive ',
+    name: 'Executive Family Suite',
+    desc: '66 m² Executive Family Suite with 2 bedrooms, living room, and private balcony. Spacious and comfortable with 2 TVs, iPod dock, and coffee machine—ideal for families or groups.',
+    price: '6,000',
+    fullDesc: 'Our 66 m² Executive Family Suites are ideal for families or groups, featuring two separate bedrooms, a spacious living room, and a private balcony with stunning views. Each bedroom is equipped with a comfortable bed and a 39" LCD TV, while the living room offers additional seating and an iPod docking station. The suite also includes a coffee machine, free Wi-Fi, and deluxe bathroom amenities for a luxurious stay.',
+    amenities: ['Family Suite', '2 Bedrooms', 'Living Room', 'Balcony', '2 TVs', 'Coffee Machine'],
+  },
+  {
+    id: 7, type: 'Ocean View Suite',
+    badge: 'Ocean View',
+    name: 'Ocean View Suite',
+    desc: '40 m² Ocean View Suite with king bed, separate living room, and private balconies. Features 39" TVs, Bose speaker, free Wi-Fi, and in-room refreshments.',
+    price: '7,000',
+    fullDesc: 'Our 40 m² Ocean View Suites offer panoramic views, a master bedroom with a king-size bed and a separate living room, each with a private balcony, 39" LCD TVs, Bose Bluetooth speaker, safe, free in-room refreshments, and WiFi access.',
+    amenities: ['Ocean View', 'King Bed', 'Separate Living Room', 'Private Balconies', '39" TVs', 'Bose Speaker'],
   },
 ]
+
+const maxIndex = computed(() => Math.max(0, rooms.length - visibleCount.value))
+const totalDots = computed(() => maxIndex.value + 1)
+const cardStep = computed(() => 100 / visibleCount.value)
+
+const prev = () => { if (currentIndex.value > 0) currentIndex.value-- }
+const next = () => { if (currentIndex.value < maxIndex.value) currentIndex.value++ }
 </script>
 
 <style scoped>
+
+:root {
+  --deep:    #03131f;
+  --ocean:   #054a70;
+  --teal:    #0a7ea0;
+  --sky:     #3ab4d4;
+  --foam:    #aee8f5;
+  --sand:    #f5e9d3;
+  --pearl:   #faf7f2;
+  --gold:    #c6a04f;
+  --gold-lt: #e4c97e;
+}
+
 #rooms {
-  padding: 7rem 4rem;
+  padding: 5rem 4rem;
   background: var(--deep);
 }
-#rooms .section-tag { color: var(--foam); }
-#rooms .section-title { color: #fff; }
-#rooms .section-desc { color: rgba(255,255,255,0.6); }
+#rooms .section-tag { color: var(--sky);}
+#rooms .section-title { color: #FCFAF1; }
+#rooms .section-desc { color: #CACACA; }
 
-.rooms-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 3.5rem;
-}
-
-.room-card {
-  cursor: pointer;
+/* ── Carousel ── */
+.carousel-wrapper {
   position: relative;
-  overflow: hidden;
-  transition: transform 0.4s;
+  margin-top: 3rem;
 }
-.room-card:hover { transform: translateY(-6px); }
+
+.carousel-track-container {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.2rem;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Room Card ── */
+.room-card {
+  flex: 0 0 calc((100% - 2 * 1.2rem) / 3);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+}
+.room-card:hover { transform: translateY(-4px); }
 
 .room-img {
   width: 100%;
-  height: 280px;
+  height: 350px;
   overflow: hidden;
+  display: block;
+  flex-shrink: 0;
 }
-.room-img svg { width: 100%; height: 100%; }
+.room-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.room-img svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
 .room-info {
-  padding: 1.6rem 1.8rem 2rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-top: none;
+  padding: 1.2rem 1.4rem;
+  background: rgba(255,255,255,0.02);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 .room-badge {
   font-family: 'Sarabun', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
+  color: #E6B31E;
+  margin-bottom: 0.4rem;
 }
 .room-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 .room-desc {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
 }
-.room-price { display: flex; align-items: baseline; gap: 0.4rem; }
+.room-price { display: flex; align-items: baseline; gap: 0.4rem; margin-top: auto; }
 .price-from {
   font-family: 'Sarabun', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.35);
 }
 .price-num {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--gold-lt);
 }
-.price-unit { font-size: 0.85rem; color: rgba(255,255,255,0.4); }
+.price-unit { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
 
-/* Modal */
+/* ── Carousel Buttons ── */
+.carousel-btn {
+  position: absolute;
+  top: calc(280px / 2);
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.carousel-btn:hover:not(:disabled) { background: rgba(255,255,255,0.18); }
+.carousel-btn:disabled { opacity: 0.2; cursor: default; }
+.carousel-btn.prev { left: -23px; }
+.carousel-btn.next { right: -23px; }
+
+/* ── Dots ── */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+.dot.active {
+  background: var(--gold-lt);
+  transform: scale(1.3);
+}
+
+/* ── Modal ── */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -209,7 +388,7 @@ const rooms = [
   padding: 2rem;
 }
 .modal-box {
-  background: var(--pearl);
+  background: #FCFAF1;
   max-width: 520px;
   width: 100%;
   padding: 3rem;
@@ -226,8 +405,9 @@ const rooms = [
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: #E6B31E;
   margin-bottom: 0.6rem;
+  font-weight: 600;
 }
 .modal-title {
   font-family: 'Playfair Display', serif;
@@ -250,16 +430,34 @@ const rooms = [
   font-family: 'Sarabun', sans-serif;
   font-size: 0.7rem;
   padding: 0.3rem 0.8rem;
+  /* background: var(--foam); */
   background: var(--foam);
   color: var(--ocean);
 }
 
-/* Modal transition */
+.btn-primary {
+  width: 100%;
+  text-align: center;
+  background-color: #E6B31E;
+  color: #343434;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .room-card { flex: 0 0 calc((100% - 1.2rem) / 2); }
+}
+@media (max-width: 768px) {
+  #rooms { padding: 5rem 2rem; }
+  .room-card { flex: 0 0 100%; }
+  .carousel-btn.prev { left: -10px; }
+  .carousel-btn.next { right: -10px; }
+}
+
+/* ── Modal Transition ── */
 .modal-enter-active, .modal-leave-active { transition: opacity 0.3s; }
 .modal-enter-from, .modal-leave-to { opacity: 0; }
-
-@media (max-width: 900px) {
-  #rooms { padding: 5rem 2rem; }
-  .rooms-grid { grid-template-columns: 1fr; }
-}
 </style>

@@ -56,7 +56,7 @@ onBeforeUnmount(() => clearInterval(timer))
 
 <style scoped>
 #testimonials {
-  padding: 7rem 4rem;
+  padding: 5rem 4rem;
   background: linear-gradient(160deg, var(--ocean), var(--deep));
   text-align: center;
 }
@@ -65,55 +65,57 @@ onBeforeUnmount(() => clearInterval(timer))
 
 .testi-wrap {
   max-width: 680px;
-  margin: 3rem auto 0;
+  margin: 2.5rem auto 0;
 }
 .testi-card {
-  padding: 3rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  padding: 2rem 0;
+  background: transparent;
+  border: none;
 }
 .stars {
   color: var(--gold-lt);
-  font-size: 1.1rem;
-  margin-bottom: 1.4rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2em;
 }
 .testi-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-style: italic;
-  color: rgba(255,255,255,0.88);
-  line-height: 1.7;
-  margin-bottom: 1.6rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-weight: 300;
 }
 .testi-author {
   font-family: 'Sarabun', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: rgba(198,160,79,0.7);
 }
 .dots {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.8rem;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
 }
 .dot {
-  width: 6px; height: 6px;
+  width: 4px; height: 4px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.2);
   border: none;
   cursor: pointer;
   transition: background 0.3s;
   padding: 0;
 }
-.dot.active { background: var(--gold); }
+.dot.active { background: rgba(198,160,79,0.6); }
 
 /* Transition */
-.fade-enter-active, .fade-leave-active { transition: opacity 0.4s; }
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
 @media (max-width: 900px) {
-  #testimonials { padding: 5rem 2rem; }
+  #testimonials { padding: 4rem 2rem; }
 }
 </style>
