@@ -64,6 +64,7 @@ const highlights = [
 <style scoped>
 #location {
   background: var(--sand);
+  scroll-margin-top: 90px;
 }
 
 .loc-inner {

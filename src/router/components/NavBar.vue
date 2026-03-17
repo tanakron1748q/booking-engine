@@ -1,16 +1,17 @@
 <template>
   <nav :class="{ scrolled }">
-    <div class="nav-logo">mercure <span>.</span></div>
+    <div class="nav-logo">
+      <a href="#hero">mercure</a> <span>.</span></div>
     <ul class="nav-links">
-      <li><a href="#about">about us</a></li>
+      <li><a href="#Footer">about us</a></li>
       <li><a href="#rooms">rooms</a></li>
-      <li><a href="#experiences">experiences</a></li>
+      <li><a href="#location">location</a></li>
       <li><a href="#gallery">gallery</a></li>
       <!-- <li><a href="#testimonials">testimonials</a></li> -->
     </ul>
     
     <button class="nav-cta" @click="scrollTo('#booking')">Booking</button>
-
+    
   </nav>
 </template>
 
@@ -47,14 +48,17 @@ nav.scrolled {
 }
 
 
-.nav-logo {
+.nav-logo a{
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.04em;
   cursor: pointer;
+  text-decoration: none; /* 👈 ตัวนี้ */
 }
+
+
 
 .nav-logo span {
   color: #FCFAF1;

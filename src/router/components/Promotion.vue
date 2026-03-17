@@ -97,7 +97,7 @@
 import { ref } from 'vue'
 import promo1 from '../assets/image/Promotion/1.jpg'
 
-import { useBookingModal } from '../../composables/useBookingModal.Js'  // เพิ่ม
+import { useBookingModal } from '../../composables/useBookingModal.js'  // เพิ่ม
 
 const { openModal: openBookingModal } = useBookingModal()  // เพิ่ม
 
@@ -192,6 +192,11 @@ function openModal(promo) {
 function closeModal() {
   showModal.value = false
   document.body.style.overflow = ''
+}
+
+function bookPromo() {
+  closeModal()
+  openBookingModal(selectedPromo.value.title)
 }
 </script>
 
