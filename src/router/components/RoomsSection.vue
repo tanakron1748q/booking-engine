@@ -22,49 +22,49 @@
             <div class="room-img">
               <!-- Superior King -->
               <img
-                src="/booking-engine/src/router/assets/image/superiorKing.jpg"
+                src="@/router/assets/image/superiorKing.jpg"
                 v-if="room.type === 'Superior King'"
                 class="room-image"
                 alt="Superior King"
               />
               <!-- Deluxe -->
               <img 
-                src = "/booking-engine/src/router/assets/image/superiorTwin.jpg"
+                src = "@/router/assets/image/superiorTwin.jpg"
                 v-if="room.type === 'Superior Twin'"
                 class="room-image"
                 alt="Superior Twin"
               />
               <!-- Suite -->
               <img 
-                src = "/booking-engine/src/router/assets/image/SuperiorOceanViewKing.jpg"  
+                src = "@/router/assets/image/SuperiorOceanViewKing.jpg"  
                 v-if="room.type === 'Superior Ocean View King'"
                 class="room-image"
                 alt="Superior Ocean View King"
               >
               <!-- Villa -->
               <img 
-                src = "/booking-engine/src/router/assets/image/deluxeOceanViewKing.jpg"
+                src = "@/router/assets/image/deluxeOceanViewKing.jpg"
                 v-if="room.type === 'Deluxe Ocean View King'"
                 class="room-image"
                 alt="Deluxe Ocean View King"
               >
               <!-- Grand Suite -->
               <img 
-                src = "/booking-engine/src/router/assets/image/deluxeOceanViewTwin.jpg"
+                src = "@/router/assets/image/deluxeOceanViewTwin.jpg"
                 v-if="room.type === 'Deluxe Ocean View Twin'"
                 class="room-image"
                 alt="Deluxe Ocean View Twin"
               >
               <!-- Pool Villa -->
               <img 
-                src = "/booking-engine/src/router/assets/image/executiveFamilySuite.jpg"
+                src = "@/router/assets/image/executiveFamilySuite.jpg"
                 v-if="room.type === 'Executive Family Suite'"
                 class="room-image"
                 alt="Executive Family Suite"
               >
               <!-- Family Room -->
               <img 
-                src = "/booking-engine/src/router/assets/image/oceanViewSuite.jpg"
+                src = "@/router/assets/image/oceanViewSuite.jpg"
                 v-if="room.type === 'Ocean View Suite'"
                 class="room-image"
                 alt="Ocean View Suite" 

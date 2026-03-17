@@ -10,7 +10,7 @@
         <!-- Featured large card -->
         <div class="promo-card large" @click="openModal(featured)">
           <div class="promo-thumb large-thumb">
-          <img :src="'/booking-engine/src/router/assets/image/Promotion/1.jpg'" class="thumb-img" alt="" />
+          <img :src="promo1" class="thumb-img" alt="" />
           <div class="thumb-overlay" />
         </div>
           <div class="promo-badge">{{ featured.badge }}</div>
@@ -95,6 +95,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import promo1 from '../assets/image/Promotion/1.jpg'
 
 import { useBookingModal } from '../../composables/useBookingModal.Js'  // เพิ่ม
 
@@ -111,6 +112,7 @@ const featured = {
   fullDesc: 'โปรโมชั่น Stay Longer Save More สำหรับผู้ที่ต้องการพักผ่อนอย่างเต็มที่ จองห้อง Deluxe Ocean View หรือ Ocean View Suite เมื่อพัก 4 คืน จ่ายเพียง 3 คืน พร้อมอาหารเช้าสำหรับ 2 ท่านทุกวัน และสิทธิ์เข้า Water Park ฟรีตลอดการเข้าพัก',
   price: 2950,
   includes: ['พัก 4 คืน จ่าย 3 คืน', 'อาหารเช้า 2 ท่าน', 'ฟรี Water Park', 'Late Check-out 14.00 น.'],
+  image: new URL('../assets/image/Promotion/1.jpg', import.meta.url).href
 }
 
 const promotions = [
@@ -128,7 +130,7 @@ const promotions = [
       'Free Wi-Fi',
       'ฟรี Water Park'
     ],
-    image: '/booking-engine/src/router/assets/image/Promotion/2.jpg',
+    image: new URL('../assets/image/Promotion/2.jpg', import.meta.url).href
   },
   {
     id: 2,
@@ -144,7 +146,7 @@ const promotions = [
       'Bubble Bath',
       'Romantic Dinner 2 ท่าน'
     ],
-    image: '/booking-engine/src/router/assets/image/Promotion/3.jpg',
+    image: new URL('../assets/image/Promotion/3.jpg', import.meta.url).href,
   },
   {
     id: 3,
@@ -160,7 +162,7 @@ const promotions = [
       'ฟรี Water Park',
       'Kids Zone Access'
     ],
-    image: '/booking-engine/src/router/assets/image/Promotion/4.jpg',
+    image: new URL('../assets/image/Promotion/4.jpg', import.meta.url).href
   },
   {
     id: 4,
@@ -176,7 +178,8 @@ const promotions = [
       'อาหารเช้า 2 ท่าน',
       'ฟรี Water Park'
     ],
-    image: '/booking-engine/src/router/assets/image/Promotion/5.jpg',
+    // image: '/booking-engine/src/router/assets/image/Promotion/5.jpg',
+    image: new URL('../assets/image/Promotion/5.jpg', import.meta.url).href
   },
 ]
 
@@ -189,12 +192,6 @@ function openModal(promo) {
 function closeModal() {
   showModal.value = false
   document.body.style.overflow = ''
-}
-
-// เพิ่มฟังก์ชันนี้
-function bookPromo() {
-  closeModal()
-  openBookingModal(selectedPromo.value.title)
 }
 </script>
 

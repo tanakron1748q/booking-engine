@@ -7,29 +7,29 @@
       <div class="g-item g-large">
       <!-- Large feature -->
           <img 
-          src="/booking-engine/src/router/assets/image/gallery/hero.jpg"
+          src="@/router/assets/image/gallery/hero.jpg"
           alt="Hero Image"
           />
       </div>
 
       <!-- Hotel -->
       <div class="g-item">
-        <img src="/booking-engine/src/router/assets/image/gallery/1.jpg" alt="1">
+        <img src="@/router/assets/image/gallery/1.jpg" alt="1">
       </div>
 
       <!-- Spa -->
       <div class="g-item">
-       <img src="/booking-engine/src/router/assets/image/gallery/2.jpg" alt="2">
+       <img src="@/router/assets/image/gallery/2.jpg" alt="2">
       </div>
 
       <!-- Restaurant -->
       <div class="g-item">
-        <img src="/booking-engine/src/router/assets/image/gallery/3.jpg" alt="3">
+        <img src="@/router/assets/image/gallery/3.jpg" alt="3">
       </div>
 
       <!-- Night cruise -->
       <div class="g-item">
-        <img src="/booking-engine/src/router/assets/image/gallery/4.jpg" alt="4">
+        <img src="@/router/assets/image/gallery/4.jpg" alt="4">
       </div>
     </div>
   </section>
